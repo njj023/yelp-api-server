@@ -1,17 +1,12 @@
 from django.conf.urls import patterns, include, url
+from django.contrib import admin
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+# This function iterates over your INSTALLED_APPS setting and looks for a file
+# named admin.py in each installed app. If one exists, it executes that file
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'yelpapiserver.views.home', name='home'),
-    # url(r'^yelpapiserver/', include('yelpapiserver.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    (r'^admin/', include(admin.site.urls)),
+    url(r'^search$', 'yelpapiserver.views.search', name = 'search')
 )
