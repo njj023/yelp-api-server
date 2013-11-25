@@ -1,3 +1,4 @@
 venv
 *.pyc
 staticfiles
+yelpapiserver/response.json
