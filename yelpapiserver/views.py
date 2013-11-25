@@ -4,6 +4,7 @@ import datetime
 import pdb
 import httplib
 import yelpapicaller
+import json
 
 def search(request):
 	# change to POST
@@ -15,10 +16,10 @@ def search(request):
 	search_params = [x.strip() for x in request.GET['q'].split(',')]
 	location = request.GET['l'].strip()
 
-	for s in search_params:
-		print("Search Param = %s" %s)
-	print("Location = %s" %location)
+	# for s in search_params:
+	# 	print("Search Param = %s" %s)
+	# print("Location = %s" %location)
 	
 	data = yelpapicaller.get_results(search_params, location)
 
-	return HttpResponse(data)
+	return HttpResponse(json.dumps(data))
